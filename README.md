@@ -1,11 +1,13 @@
-# React Truffle Box
+# Decenterlized Voting 
 
 This box comes with everything you need to start using Truffle to write, compile, test, and deploy smart contracts, and interact with them from a React app.
 
 ## Installation
 
-First ensure you are in an empty directory.
-
+clone the repo
+```
+$ git clone 
+```
 Run the `unbox` command using 1 of 2 ways.
 
 ```sh
