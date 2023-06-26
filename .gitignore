@@ -31,6 +31,6 @@ yarn-debug.log*
 yarn-error.log*
 
 #client
-/client
+# /client
 /node_modules
 /truffle/node_modules
