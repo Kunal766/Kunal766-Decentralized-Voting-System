@@ -9,6 +9,11 @@ contract vote {
     string[] public options;
     mapping(string => uint) public votes;
 
+    string public winner = "kunal";
+    uint private maxVote = 0;
+
+    event winner_chage(string winner_changed);
+
     constructor() {
         admin = msg.sender;
         voterlist.push(0x107dB54211D55001D2b3D66ea0b67b50dA9c3d38);
@@ -44,7 +49,7 @@ contract vote {
         isVoted[_voter] = true;
     }
 
-   function verifySignature(
+    function verifySignature(
         address _signer,
         bytes32 _messageHash,
         bytes memory _signature
@@ -74,16 +79,21 @@ contract vote {
     }
 
     function Vote(
-         address _signer,
+        address _signer,
         bytes32 _messageHash,
         bytes memory _signature,
         string memory option
     ) public {
         require(isVoted[_signer]);
-        require(verifySignature(_signer, _messageHash,_signature));
+        require(verifySignature(_signer, _messageHash, _signature));
         votes[option]++;
+        if (maxVote < votes[option]) {
+            maxVote = votes[option];
+            winner = option;
+            emit winner_chage(option);
+        }
         isVoted[_signer] = false;
     }
 
-    function winer() public {}
+    // function winer() public {}
 }

@@ -3,6 +3,8 @@ import './form.css';
 import EthContext  from '../contexts/EthContext/useEth';
 import Button from 'react-bootstrap/Button'
 import { useKeypair } from '../contexts/key_pair_genration';
+// require('dotenv').config();
+
 
 function Form() {
 
@@ -20,7 +22,7 @@ const handleSubmit = async(event) => {
   try{
   const message =   Ethcontext.state.web3.utils.sha3(selectedOption);
   const signature =   Ethcontext.state.web3.eth.accounts.sign(message, formData.privatekey).signature;
-  const result = await   Ethcontext.state.contract.methods.Vote(formData.publicKey, message, signature,selectedOption).send({from:"0xA5FcB33923dfEaD42F70527b8Dbf9f2e06555704"});
+  const result = await   Ethcontext.state.contract.methods.Vote(formData.publicKey, message, signature,selectedOption).send({from:"0x18Aa656029469F7CCA30fA51905e11472e4ae498"});
   console.log(result);
   }
   catch(error){
@@ -35,7 +37,7 @@ const handleSubmit = async(event) => {
 
  //fetching options from contact
 const getData=async()=>{
-  await Ethcontext.state.contract.methods.optionsList().call({from: '0xA5FcB33923dfEaD42F70527b8Dbf9f2e06555704'}, function(error, result){
+  await Ethcontext.state.contract.methods.optionsList().call({from: "0x18Aa656029469F7CCA30fA51905e11472e4ae498"}, function(error, result){
   setoptions(result);
   console.log(error, result);
 })

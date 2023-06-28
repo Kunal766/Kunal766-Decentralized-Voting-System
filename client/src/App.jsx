@@ -15,6 +15,10 @@ import {
 import Form from "./Components/form"
 import CreatKey from "./Components/createnewKeyPair"
 import Admin from "./Components/admin"
+import Result from "./Components/results";
+
+//listners
+import Listners from "./EventListners/ResultListner"
 
 //bootstrap csse
 import Navbar from "react-bootstrap/Navbar"
@@ -44,6 +48,9 @@ function App() {
           <LinkContainer to="/admin">
           <Nav.Link>admin</Nav.Link>
           </LinkContainer>
+          <LinkContainer to="/result">
+          <Nav.Link>Resuls</Nav.Link>
+          </LinkContainer>
           </Nav>
         </Container>
         </Navbar>
@@ -51,8 +58,10 @@ function App() {
         <Route exact path="/" element={<Form/>}/>
         <Route  path="/key" element={<CreatKey/>}/>
         <Route path="/admin" element={<Admin/>}/>
-        </Routes>
+        <Route path="/result" element={<Result/>}/>
+       </Routes>
     </Router>
+    {/* <Listners/> */}
     </KeypairContextProvider>
     </EthProvider>
   );
