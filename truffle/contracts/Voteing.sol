@@ -12,7 +12,6 @@ contract vote {
     string public winner = "kunal";
     uint private maxVote = 0;
 
-    event winner_chage(string winner_changed);
 
     constructor() {
         admin = msg.sender;
@@ -90,10 +89,8 @@ contract vote {
         if (maxVote < votes[option]) {
             maxVote = votes[option];
             winner = option;
-            emit winner_chage(option);
         }
         isVoted[_signer] = false;
     }
 
-    // function winer() public {}
 }
